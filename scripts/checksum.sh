@@ -15,8 +15,7 @@
 #
 
 #!/bin/bash
-SAMPLE=$1
-RESULT_FILE=$2
+RESULT_FILE=$1
 
 if [ -f $RESULT_FILE ]; then
   rm $RESULT_FILE
@@ -30,7 +29,7 @@ checksum_file() {
 FILES=()
 while read -r -d ''; do
 	FILES+=("$REPLY")
-done < <(find $SAMPLE -type f \( -name "build.gradle*" -o -name "gradle-wrapper.properties" \) -print0)
+done < <(find ./ -type f \( -name "build.gradle*" -o -name "gradle-wrapper.properties" \) -print0)
 
 # Loop through files and append MD5 to result file
 for FILE in ${FILES[@]}; do
